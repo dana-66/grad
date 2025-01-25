@@ -63,10 +63,14 @@ const ImageUploaderModal = ({ onAddImage }) => {
             handleClose();
         }
     };
+    const style = {
+    height: "-webkit-fill-available",
+    width: "-webkit-fill-available",
+  };
 
     return (
         <div>
-            <Button variant="contained" onClick={handleOpen}>
+            <Button variant="contained" onClick={handleOpen} style={style}>
                 Add Image
             </Button>
             <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
