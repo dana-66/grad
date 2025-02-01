@@ -1,49 +1,28 @@
-// // will delete later
+import PropTypes from 'prop-types';
+import './Modal.css'; // Import CSS for modal styling
 
-// import  { useState } from 'react';
-// import PropTypes from 'prop-types';
-// import styles from './ui/modal.module.css';
+const Modal = ({ onClose, videoUrl }) => {
+    return (
+        <div className="modal-overlay" onClick={onClose}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <button className="close-button" onClick={onClose}>X</button>
+                <iframe
+                    width="1080"
+                    height="515"
+                    src={videoUrl}
+                    title="YouTube video player"
+                    frameBorder="1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                ></iframe>
+            </div>
+        </div>
+    );
+};
 
-// function Modal({ isOpen, onClose, onSubmit }) {
-//   const [pageName, setPageName] = useState('');
+Modal.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    videoUrl: PropTypes.string.isRequired,
+};
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (pageName.trim()) {
-//       onSubmit(pageName);
-//       setPageName('');
-//       onClose();
-//     } else {
-//       alert("Page name cannot be empty.");
-//     }
-//   };
-
-//   if (!isOpen) return null;
-
-//   return (
-//     <div className={styles.modalOverlay}>
-//       <div className={styles.modalContent}>
-//         <h2>Add New Page</h2>
-//         <div onSubmit={handleSubmit}>
-//           <input
-//             type="text"
-//             value={pageName}
-//             onChange={(e) => setPageName(e.target.value)}
-//             placeholder="Enter page name"
-//             required
-//           />
-//           <button type="submit">Add Page</button>
-//           <button type="button" onClick={onClose}>Cancel</button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// Modal.propTypes = {
-//   isOpen: PropTypes.bool.isRequired,
-//   onClose: PropTypes.func.isRequired,
-//   onSubmit: PropTypes.func.isRequired,
-// };
-
-// export default Modal;
+export default Modal; 
